@@ -1,0 +1,80 @@
+:root {
+  --battlefield-color: #ffb000;
+  --second-battlefield-color: #25b79f;
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .app {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .battlefield {
+    width: 100vw;
+    height: 100vw;
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    order: 1;
+  }
+  .battlefield-container {
+    width: auto;
+    border: 10px solid var(--battlefield-color);
+    display: grid;
+    width: 100%;
+    grid-template-rows: repeat(10, 10%);
+    grid-template-columns: repeat(10, 10%);
+  }
+  .battlefield-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(60, 60, 60, 0.3);
+  }
+  .battlefield-cell:hover {
+    background-color: rgba(60, 60, 60, 0.3);
+  }
+  .battlefield-cell--hit {
+    background-image: url('./assets/Hit.png');
+    background-size: 100%;
+  }
+  .battlefield-cell--miss {    background-image: url('./assets/Miss.png');
+    background-size: 100%;}
+  .battlefield-cell--miss:hover, .battlefield-cell--hit:hover {
+    background-color: none;
+  }
+  .counter {
+    order: 2;
+    display: flex;
+    flex-direction: row;
+  }
+  .counter-player {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .counter-player:nth-child(1) { background-color: var(--battlefield-color);}
+  .counter-player:nth-child(2) {background-color: var(--second-battlefield-color);} 
+  .counter-player__number {
+    padding: 8px 0;
+    font-size: x-large;
+    font-weight: bold;
+  }
+  .counter-player__divider {
+    width: 50%;
+    border-top: 1px solid rgba(60, 60, 60, 0.3);
+  }
+  .counter-player__name {
+    padding: 8px 0;
+  }
+  .shiplist {
+    order: 3;
+
+  }
+}

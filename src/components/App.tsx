@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShipLayout, ShipTypes, CellChargeStatus, CellCharges, ShipPositionInStrings } from '../models';
+import { ShipTypes, CellChargeStatus, CellCharges, ShipPositionInStrings } from '../models';
 import { ICounterProps, Counter } from './Counter';
 import { ShipList } from './ShipList';
 import { BattleField } from './BattleField';
@@ -19,9 +19,9 @@ const App: React.FC<IAppProps> = (props) => {
   const firstPlayerPoints = Object.values(charges).filter(x => x === CellChargeStatus.Beaten).length;
   const secondPlayerPoints = Object.values(charges).filter(x => x === CellChargeStatus.Missed).length;
   const counterProps: ICounterProps = { firstPlayerPoints,  secondPlayerPoints}
-  console.log(charges);
+
   return (
-    <div className="App">
+    <div className="app">
       <Counter {...counterProps} />
       <ShipList shipTypes={shipTypes} />
       <BattleField layout={layout} cellCharges={charges} chargeCell={chargeCell} />

@@ -1,5 +1,19 @@
 import React from 'react';
-import { ShipLayout, CellCharges, CellChargeStatus, ShipPositionInStrings } from '../models';
+import { CellCharges, CellChargeStatus, ShipPositionInStrings } from '../models';
+
+export interface IBattleFieldCell {
+  status: CellChargeStatus;
+  onClick: any;
+}
+
+export const BattleFieldCell: React.FC<IBattleFieldCell> = props => {
+  const { onClick, status } = props;
+  const chargeStatusClassName = status ? status === CellChargeStatus.Missed ? 'battlefield-cell--miss' : 'battlefield-cell--hit' : '';
+  return <div
+    className={`battlefield-cell ${chargeStatusClassName}`}
+    onClick={onClick}
+  />;
+}
 
 export interface IBattleFieldProps {
   layout: ShipPositionInStrings[],
@@ -7,30 +21,26 @@ export interface IBattleFieldProps {
   chargeCell: any
 }
 
-export const BattleField: React.FC<IBattleFieldProps> = (props) => {
+export const BattleField: React.FC<IBattleFieldProps> = props => {
   const { cellCharges, chargeCell, layout } = props;
 
-  return <div>
-    <h2>BattleField</h2>
-    <div>
+  return <div className="battlefield">
+    <div className="battlefield-container">
       {
         Array.from(Array(10).keys()).map(
           (x, row) => {
-            return <div key={row} style={{ display: 'flex', flexDirection: 'row' }}>{Array.from(Array(10).keys()).map((x, column) => {
-              
-              const status = cellCharges[`${row}.${column}`];
-              console.log(layout);
-              const doesCellHaveShip = layout && layout.map(x => x.positions.includes(`${row}.${column}`)).includes(true);
+            return Array.from(Array(10).keys()).map((x, column) => {
 
+              const status = cellCharges[`${row}.${column}`];
+              const doesCellHaveShip = layout && layout.map(x => x.positions.includes(`${row}.${column}`)).includes(true);
 
               const message = status ? status === CellChargeStatus.Missed ? 'm' : 'B' : '.';
 
-              return <div
-                key={column}
-                style={{ width: 15, height: 15 }}
+              return <BattleFieldCell key={`${row}.${column}`}
+                status={status}
                 onClick={() => !status && chargeCell(row, column, doesCellHaveShip ? 2 : 1)}
-              >{message}</div>
-            })}</div>
+              />;
+            })
           })
       }
     </div>

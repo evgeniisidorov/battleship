@@ -7,13 +7,16 @@ export interface ICounterProps {
 
 export const Counter: React.FC<ICounterProps> = (props) => {
   const { firstPlayerPoints, secondPlayerPoints } = props;
-  return <div>
-    <span>
-      {`Player 1 -- ${firstPlayerPoints}`}
-    </span>
-    <br />
-    <span>
-      {`Player 2 -- ${secondPlayerPoints}`}
-    </span>
+  return <div className="counter">
+    <div className="counter-player">
+      <span className="counter-player__number">{firstPlayerPoints}</span>
+      <div className="counter-player__divider" />
+      <span className="counter-player__name">Player 1</span>
+    </div>
+    <div className="counter-player">
+      <span className="counter-player__number">{secondPlayerPoints}</span>
+      <div className="counter-player__divider" />
+      <span className="counter-player__name">Player 2</span>
+    </div>
   </div>
 }

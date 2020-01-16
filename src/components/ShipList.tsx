@@ -7,5 +7,5 @@ export interface IShipListProps {
 
 export const ShipList: React.FC<IShipListProps> = (props) => {
   const { shipTypes } = props;
-  return <ul>{Object.entries(shipTypes).map(x => <li key={x[0]}>{`${x[0]} -- ${x[1].count}`}</li>)}</ul>;
+  return <ul className="shiplist">{Object.entries(shipTypes).map(x => <li key={x[0]}>{`${x[0]} -- ${x[1].count}`}</li>)}</ul>;
 }
