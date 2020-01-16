@@ -21,4 +21,4 @@ export type ShipTypes = {
 
 export type ShipLayout = ShipPosition[];
 
-export type CellCharges = Map<string, CellChargeStatus>;
+export type CellCharges = { [key: string]: CellChargeStatus };

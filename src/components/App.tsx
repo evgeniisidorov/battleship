@@ -3,6 +3,8 @@ import { ShipLayout, ShipTypes, CellChargeStatus, CellCharges } from '../models'
 import { ICounterProps, Counter } from './Counter';
 import { ShipList } from './ShipList';
 import { BattleField } from './BattleField';
+import { addChargedCell } from '../actions';
+import { connect } from 'react-redux';
 
 interface Data {
   shipTypes: ShipTypes,
@@ -26,20 +28,36 @@ const mockData: Data = {
   ]
 }
 
-const App: React.FC = () => {
+interface IAppProps {
+  charges: CellCharges;
+  chargeCell: any
+}
+
+const App: React.FC<IAppProps> = (props) => {
   const { shipTypes, layout } = mockData;
   const counterProps: ICounterProps = { firstPlayerPoints: 0, secondPlayerPoints: 0 }
-  const cellCharges: CellCharges = new Map<string, CellChargeStatus>();
-  cellCharges.set('1.2', CellChargeStatus.Beaten);
-  cellCharges.set('3.4', CellChargeStatus.Missed);
+  const { charges, chargeCell } = props;
 
+  console.log(charges);
   return (
     <div className="App">
       <Counter {...counterProps} />
       <ShipList shipTypes={shipTypes} />
-      <BattleField layout={layout} cellCharges={cellCharges} />
+      <BattleField layout={layout} cellCharges={charges} chargeCell={chargeCell} />
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state: any) => {
+  return {
+    charges: Object.assign({}, state.chargeReducer.charges)
+  }
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    chargeCell: (row: number, column: number, chargeStatus: CellChargeStatus) => dispatch(addChargedCell(row, column, chargeStatus))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
