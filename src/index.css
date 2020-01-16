@@ -3,23 +3,15 @@
   --second-battlefield-color: #25b79f;
 }
 
-@media screen and (max-width: 480px) {
+@media screen {
   body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
   }
-  .app {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-  }
   .battlefield {
-    width: 100vw;
-    height: 100vw;
     display: flex;
     justify-content: stretch;
     align-items: stretch;
-    order: 1;
   }
   .battlefield-container {
     width: auto;
@@ -51,7 +43,6 @@
     background-color: none;
   }
   .counter {
-    order: 2;
     display: flex;
     flex-direction: row;
   }
@@ -83,7 +74,6 @@
   .shiplist {
     margin: 0;
     padding: 16px;
-    order: 3;
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-columns: repeat(auto, 3);
@@ -121,5 +111,77 @@
   }
   .submarine {
     background-image: url("./assets/SubmarineShape.png");
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .app {
+    display: grid;
+    grid-row: auto auto auto;
+    grid-template-columns: 30% 70%;
+    grid-gap: 16px;
+    width: 90vw;
+    margin: 16px auto 0;
+  }
+  .counter {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .shiplist {
+    grid-column: 1;
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+  .battlefield {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column: 2;
+    width: calc(0.7 * 90vw - 16px);
+    height: calc(0.7 * 90vw - 16px);
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  .app {
+    display: grid;
+    grid-row: auto auto;
+    grid-template-columns: 50% 50%;
+    grid-gap: 16px;
+    width: 90vw;
+    margin: 16px auto 0;
+  }
+  .battlefield {
+    width: 90vw;
+    height: 90vw;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row: 1;
+  }
+  .counter {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .shiplist {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .app {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .battlefield {
+    width: 100vw;
+    height: 100vw;
+    order: 1;
+  }
+  .counter {
+    order: 2;
+  }
+  .shiplist {
+    order: 3;
   }
 }
