@@ -39,12 +39,15 @@
     background-color: rgba(60, 60, 60, 0.3);
   }
   .battlefield-cell--hit {
-    background-image: url('./assets/Hit.png');
+    background-image: url("./assets/Hit.png");
     background-size: 100%;
   }
-  .battlefield-cell--miss {    background-image: url('./assets/Miss.png');
-    background-size: 100%;}
-  .battlefield-cell--miss:hover, .battlefield-cell--hit:hover {
+  .battlefield-cell--miss {
+    background-image: url("./assets/Miss.png");
+    background-size: 100%;
+  }
+  .battlefield-cell--miss:hover,
+  .battlefield-cell--hit:hover {
     background-color: none;
   }
   .counter {
@@ -59,8 +62,12 @@
     justify-content: center;
     align-items: center;
   }
-  .counter-player:nth-child(1) { background-color: var(--battlefield-color);}
-  .counter-player:nth-child(2) {background-color: var(--second-battlefield-color);} 
+  .counter-player:nth-child(1) {
+    background-color: var(--battlefield-color);
+  }
+  .counter-player:nth-child(2) {
+    background-color: var(--second-battlefield-color);
+  }
   .counter-player__number {
     padding: 8px 0;
     font-size: x-large;
@@ -74,7 +81,45 @@
     padding: 8px 0;
   }
   .shiplist {
+    margin: 0;
+    padding: 16px;
     order: 3;
-
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-columns: repeat(auto, 3);
+  }
+  .shiplist-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .shiplist-item__image {
+    width: 72px;
+    height: 24px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .shiplist-item__counter {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid rgba(60, 60, 60, 0.3);
+    margin: 4px;
+  }
+  .carrier {
+    background-image: url("./assets/AircraftShape.png");
+  }
+  .battleship {
+    background-image: url("./assets/BattleshipShape.png");
+  }
+  .destroyer {
+    background-image: url("./assets/CarrierShape.png");
+  }
+  .cruiser {
+    background-image: url("./assets/CruiserShape.png");
+  }
+  .submarine {
+    background-image: url("./assets/SubmarineShape.png");
   }
 }

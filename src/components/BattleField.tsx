@@ -30,11 +30,8 @@ export const BattleField: React.FC<IBattleFieldProps> = props => {
         Array.from(Array(10).keys()).map(
           (x, row) => {
             return Array.from(Array(10).keys()).map((x, column) => {
-
               const status = cellCharges[`${row}.${column}`];
               const doesCellHaveShip = layout && layout.map(x => x.positions.includes(`${row}.${column}`)).includes(true);
-
-              const message = status ? status === CellChargeStatus.Missed ? 'm' : 'B' : '.';
 
               return <BattleFieldCell key={`${row}.${column}`}
                 status={status}

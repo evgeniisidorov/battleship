@@ -1,5 +1,5 @@
 import { actionTypes } from '../actions';
-import { CellChargeStatus, CellCharges } from '../models';
+import { CellCharges } from '../models';
 
 export type ChargeState = { charges:  CellCharges }
 
