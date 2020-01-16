@@ -11,6 +11,7 @@ export const Counter: React.FC<ICounterProps> = (props) => {
     <span>
       {`Player 1 -- ${firstPlayerPoints}`}
     </span>
+    <br />
     <span>
       {`Player 2 -- ${secondPlayerPoints}`}
     </span>

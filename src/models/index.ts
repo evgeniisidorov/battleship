@@ -15,6 +15,10 @@ export interface ShipPosition {
   positions: [number, number][]
 }
 
+export interface ShipPositionInStrings {
+  ship: string, positions: string[]
+}
+
 export type ShipTypes = {
   [shipKey: string]: ShipType
 }
